@@ -1,0 +1,22 @@
+{
+  "name": "real-time-web-project",
+  "version": "1.0.0",
+  "description": "map connection app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VincentKempers/real-time-web-project.git"
+  },
+  "author": "vincent kempers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VincentKempers/real-time-web-project/issues"
+  },
+  "homepage": "https://github.com/VincentKempers/real-time-web-project#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}

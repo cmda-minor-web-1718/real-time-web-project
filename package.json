@@ -1,0 +1,25 @@
+{
+  "name": "football-tweets",
+  "version": "1.0.0",
+  "description": "An overview of all tweets about a specific football match",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rick712/real-time-web-project.git"
+  },
+  "author": "Rick Buter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rick712/real-time-web-project/issues"
+  },
+  "homepage": "https://github.com/Rick712/real-time-web-project#readme",
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.3",
+    "twitter-stream-api": "^0.5.2"
+  }
+}

@@ -4,7 +4,8 @@
   "description": "map connection app",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,11 @@
   "homepage": "https://github.com/VincentKempers/real-time-web-project#readme",
   "devDependencies": {
     "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "@google/maps": "^0.4.6",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.0"
   }
 }

@@ -20,6 +20,14 @@
 
   var socket = io();
 
+  socket.on('save user in localstorage', function(data){
+    var ctx = JSON.stringify({user: data.user, color: data.color});
+    console.log(ctx)
+    if(window.localStorage){
+      localStorage.setItem(data.key, ctx)
+    }
+  })
+
   function userParticipation(joined = True, data) {
     let messageBlock = document.createElement("li");
     let participationStatus = document.createElement("p");
@@ -36,12 +44,32 @@
     socket.emit("login temp user", {
       user: tempUser.value
     });
+    e.preventDefault();
+  
+
   });
   socket.on("login temp user", function(data) {
-    document.querySelector("#tempaccount").style.display = "none";
-    document.querySelector("#chatbar").style.display = "flex";
-    document.querySelector("#display").style.display = "grid";
-    e.preventDefault();
+  
+  });
+
+  function promptLoginScreen(){
+    document.querySelector("#tempaccount").style.display = "flex";
+    document.querySelector("#chatbar").style.display = "none";
+    document.querySelector("#display").style.display = "none";
+  }; 
+
+
+
+  socket.on('check localstorage', function(data) {
+    console.log(data.temp)
+    var data = localStorage.getItem(data.user) || localStorage.getItem(data.temp)
+    console.log(data)
+    if(!data){
+      promptLoginScreen()
+    }else{
+      var data = JSON.parse(data)
+      socket.emit('logged in', data)
+    }
   });
 
   chatBar.addEventListener("submit", function(event) {
@@ -83,6 +111,10 @@
   });
 
   socket.on("setup user client", function(data) {
+    console.log(data)
+    document.querySelector("#tempaccount").style.display = "none";
+    document.querySelector("#chatbar").style.display = "flex";
+    document.querySelector("#display").style.display = "grid";
     currentRoom.innerHTML = "Current room " + data.room;
     chatWindow.innerHTML = "";
   });

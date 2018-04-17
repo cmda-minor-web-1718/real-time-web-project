@@ -18,7 +18,7 @@ exports.joinRoom = function joinRoom(io, socket, user, room) {
 
   // Signal the users client to configure
   socket.emit("setup user client", {
-    room: room
+    user: user, room: room
   });
 
   socket.to(room).broadcast.emit("user joined", {

@@ -26,10 +26,6 @@ body {
     overflow: hidden;
 }
 
-#chatbar {
-    display: none;
-    grid-column: span 3;
-}
 
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */
@@ -87,6 +83,8 @@ header {
 }
 
 #chatbar {
+    grid-column: span 3;
+    display: flex;
     height: 10vh;
     margin: 0;
 }
@@ -110,9 +108,13 @@ header {
 }
 
 
+#display {
+    display:grid;
+}
+
 #tempaccount {
     color: white;
-    display: flex;
+    display: none;
     justify-content: center;
     height: 100vh;
     margin: 0;

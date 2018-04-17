@@ -4,9 +4,11 @@ This is going to be an app that makes meeting up easier. To figure out what or w
 
 ## how should this work.
 
-You can create a room and invite your friends. When the friends join the room one of them (the person who created the room) can pin point a location. When the user have pinpointed a location the server suggests some locations around that point. When the user "locks in" a location the users will see the point. When the users reach a point the users can hit i'm there.
+You can create a room and invite your friends. When the friends join the room one of them (the person who created the room) can pin point a location. When the user have pinpointed a location the server suggests some locations around that point. When the user "locks in" a location the users will see the point. When the users reach a point the users can hit i'm there. So the other users know he/she is already there so they can see him/her.
 
-[google maps services](https://github.com/googlemaps/google-maps-services-js)
+* [google maps services](https://github.com/googlemaps/google-maps-services-js)
+* [Socket.io](https://socket.io/)
+* [express](https://expressjs.com/)
 
 <!-- ☝️ replace this description -->
 

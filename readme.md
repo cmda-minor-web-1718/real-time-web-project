@@ -1,10 +1,12 @@
 # real-time-web-project
 
-This repo will hold the project you're going to build during the last two weeks of RTW. It functions as a way to show you've attained the following learning goals of this course:
+This is going to be an app that makes meeting up easier. To figure out what or which is the best for both users.
 
-* Build a Node Web App which consumes an external data source through an API and serves a frontend using routing and templating techniques.
-* Create a "live" web app which reflects changes to the back-end data model in reactive front-end views, using real-time, event-based, messaging technologies like sockets or server-sent-events.
-* Describe their work in a professional readme with insightful diagrams showing the life cycle of their data.
+## how should this work.
+
+You can create a room and invite your friends. When the friends join the room one of them (the person who created the room) can pin point a location. When the user have pinpointed a location the server suggests some locations around that point. When the user "locks in" a location the users will see the point. When the users reach a point the users can hit i'm there.
+
+[google maps services](https://github.com/googlemaps/google-maps-services-js)
 
 <!-- ☝️ replace this description -->
 

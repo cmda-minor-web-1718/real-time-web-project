@@ -34,8 +34,10 @@
 
   loginTempUser.addEventListener("click", function(e) {
     socket.emit("login temp user", {
-      username: tempUser.value
+      user: tempUser.value
     });
+  });
+  socket.on("login temp user", function(data) {
     document.querySelector("#tempaccount").style.display = "none";
     document.querySelector("#chatbar").style.display = "flex";
     document.querySelector("#display").style.display = "grid";

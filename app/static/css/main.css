@@ -1,0 +1,150 @@
+:root {
+    --chat-extra-menus:rgb(54,57,62) ;
+  }
+body {
+    color: rgba(0,0,0,.84);
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+.chat-header, .room-header {
+    padding-left: 20px;
+}
+
+#current_room {
+    padding-left: 20px;
+}
+* {
+    box-sizing: border-box;
+}
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+}
+
+#chatbar {
+    display: none;
+    grid-column: span 3;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #011526;
+}
+
+#chat-chat {
+    background-color: rgb(66,69,73);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+
+header {
+    background-color:rgb(30,33,36);
+    color: white;
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto;
+
+}
+
+#is_typing {
+    position: absolute;
+    bottom: 11vh;
+    left: 13%;
+    color: white;
+}
+
+#rooms {
+    padding-top: 20px;
+    background-color: var(--chat-extra-menus);
+    color: white;
+    overflow-y: scroll;
+    margin: 0;
+}
+
+
+
+#users {
+
+    overflow-y: hidden;
+    margin: 0;
+    background-color: var(--chat-extra-menus);
+    color: white;
+    padding-right: 10px;
+}
+
+#chatbar {
+    height: 10vh;
+    margin: 0;
+}
+
+#chatbar input[type='text'] {
+    width: 90%;
+    padding: 30px;
+    margin: 0;
+    flex: 4;
+    height: 100%;
+    font-size: 1.3em;
+    color:rgba(0,0,0,.84);
+    
+}
+
+#chatbar button {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+
+#tempaccount {
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    background-color: rgba(0,0,0,.84);;
+}
+
+form {
+    max-width: 100%;
+}
+
+form input {
+    background-color: transparent;
+    appearance: none;
+    border: none;
+    color: white;
+    width: 330px;
+    height: 50px;
+    border-bottom: 1px solid aliceblue;
+}
+
+#chatbar input {
+    color: rgba(0,0,0,.84);
+}
+
+a {
+    cursor: pointer;
+    transition: .2s all ease-in;
+   
+}
+a:hover {
+    color: rgba(255,255,255,.83);
+    border-bottom: 1px solid #011526;
+}

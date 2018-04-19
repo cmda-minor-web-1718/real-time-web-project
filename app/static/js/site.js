@@ -20,18 +20,12 @@
 
   var socket = io();
 
-  
-
   socket.on("save user in localstorage", function(data) {
     var ctx = JSON.stringify({ user: data.user, color: data.color });
     console.log(ctx);
     if (window.localStorage) {
       localStorage.setItem(data.key, ctx);
     }
-  });
-
-  socket.on("je moeder", function(data) {
-    console.log("skrill");
   });
 
   function userParticipation(joined = True, data) {
@@ -60,16 +54,14 @@
     document.querySelector("#display").style.display = "none";
   }
 
-  socket.on("check localstorage", function(data) {
-    console.log(data.temp);
-    var data =
-      localStorage.getItem(data.user) || localStorage.getItem(data.temp);
-    console.log(data);
-    if (!data) {
+  socket.on("check localstorage", function(localStorageKeyNames) {
+    var userData = localStorage.getItem(localStorageKeyNames.temp);
+
+    if (!localStorageKeyNames) {
       promptLoginScreen();
     } else {
-      var data = JSON.parse(data);
-      socket.emit("logged in", data);
+      var userData = JSON.parse(userData);
+      socket.emit("logged in", userData);
     }
   });
 
@@ -83,18 +75,19 @@
 
   function typingFunction() {
     typing = false;
-    socket.emit("typing", false);
+    socket.emit("typing", { message: false, typing: typing });
   }
   let timeout;
   messageInput.addEventListener("keyup", function() {
     typing = true;
-    socket.emit("typing");
+    socket.emit("typing", { typing: typing });
     clearTimeout(timeout);
     timeout = setTimeout(typingFunction, 500);
   });
 
   socket.on("typing", function(data) {
     if (data.typing) {
+      console.log("test");
       typingNotification.innerHTML = data.message;
     } else {
       typingNotification.innerHTML = "";

@@ -1,5 +1,4 @@
 const express = require("express");
-const googleMaps = require("@google/maps");
 const dotenv = require("dotenv").config();
 const http = require('http');
 const socketIO = require('socket.io');
@@ -14,7 +13,6 @@ app.set('view engine', 'ejs');
 // server files in the static folder when '/static' is requested
 app.use('/static', express.static('static'));
 
-// google create the client with Api key and show promise
 
 // get the directory
 app.get("/", (req,res) => {
@@ -28,7 +26,7 @@ io.on('connection', (socket) => {
   })
 });
 
-server.listen(8090, () => {
+server.listen(7008, () => {
   console.log('app is running on localhost:8080, WAHOOO');
 });
 

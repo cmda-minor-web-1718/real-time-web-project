@@ -13,7 +13,6 @@ function getLocation() {
     }
 }
 
-getLocation();
 
 function showPosition(position) {
     two.innerHTML = "Latitude: " + position.coords.latitude +

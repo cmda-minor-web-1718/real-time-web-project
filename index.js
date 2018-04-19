@@ -1,10 +1,10 @@
 const express = require("express");
 const googleMaps = require("@google/maps");
-const db = require("dotenv");
+const dotenv = require("dotenv").config();
 
-db.connect({
-  api: process.env.DB_PROJECT_API,
-});
+// dotenv.connect({
+//   api: process.env.DB_PROJECT_API,
+// });
 
 
 const app = express();
@@ -13,7 +13,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 var googleMapsClient = googleMaps.createClient({
-  key: api,
+  key: dotenv.parsed.DB_PROJECT_API,
   Promise: Promise
 });
 

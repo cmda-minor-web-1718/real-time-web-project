@@ -5,20 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VincentKempers/real-time-web-project.git"
   },
-  "author": "vincent kempers",
-  "license": "ISC",
+  "author": "Vincent Kempers <me@vncn.tk>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/VincentKempers/real-time-web-project/issues"
-  },
-  "homepage": "https://github.com/VincentKempers/real-time-web-project#readme",
-  "devDependencies": {
-    "nodemon": "^1.17.3"
   },
   "dependencies": {
     "@google/maps": "^0.4.6",
@@ -26,5 +22,9 @@
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "socket.io": "^2.1.0"
+  },
+  "homepage": "https://github.com/VincentKempers/real-time-web-project#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
   }
 }

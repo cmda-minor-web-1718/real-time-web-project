@@ -15,45 +15,20 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static('static'));
 
 // google create the client with Api key and show promise
-var googleMapsClient = googleMaps.createClient({
-  key: dotenv.parsed.DB_PROJECT_API,
-  Promise: Promise
-});
 
-app.use("/", (req,res) => {
-  var response;
-  googleMapsClient.geocode({address: '1600 Amphitheatre Parkway, Mountain View, CA'})
-  .asPromise()
-  .then((response) => {
-    var response = response.json.results;
-    response.forEach(element => {
-      console.log(element.address_components);
-      io.emit('location', element.address_components)
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  res.render("home", { response });
+// get the directory
+app.get("/", (req,res) => {
+  // empty variable to show response
+  res.render("home", { response:'response' });
 });
 
 io.on('connection', (socket) => {
   socket.on('location', (location) => {
-    googleMapsClient.geocode({ address: `${location}` })
-      .asPromise()
-      .then((response) => {
-        var response = response.json.results;
-        response.forEach(element => {
-          console.log(element.address_components);
-          io.emit('location', element.address_components)
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(location);
   })
-})
+});
 
-app.listen(8080, () => {
+server.listen(8090, () => {
   console.log('app is running on localhost:8080, WAHOOO');
 });
+

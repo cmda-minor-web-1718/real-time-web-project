@@ -27,6 +27,7 @@ This is going to be an app that makes meeting up easier. To figure out what or w
 * To install `npm install`
 * to run in development `npm run dev`
 * To start `npm start`
+* the server listens to `localhost:7008`
 
 
 ## Features

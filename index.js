@@ -28,5 +28,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(7008, () => {
-  console.log('app is running on localhost:8080, WAHOOO');
+  console.log('app is running on localhost:7008, WAHOOO');
 });

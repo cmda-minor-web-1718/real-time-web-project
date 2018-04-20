@@ -45,7 +45,7 @@ You can create a room and invite your friends. When the friends join the room on
 * [Mapbox](https://www.mapbox.com/) - The actual map
 
 ### But why
-<div align="center"><img src="https://media.giphy.com/media/s239QJIh56sRW/giphy.gif"></div>
+![gif](https://media.giphy.com/media/s239QJIh56sRW/giphy.gif)
 <br >
 
 Well...,

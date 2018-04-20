@@ -1,58 +1,44 @@
-const http = require('http')
 const express = require('express')
+const app = express() 
 const nodemon = require('nodemon')
 const ejs = require('ejs')
-const TwitterStream = require('twitter-stream-api')
-const fs = require('fs')
-const apikey = require('./apikey')
 
-const app = express()
+const apikey = require('./apikey')
+const Twitter = require('twitter')
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http)
 
 const port = 3000
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-const Twitter = new TwitterStream(apikey, false);
-Twitter.stream('statuses/filter', {
-    follow: '2902821'
+const client = new Twitter({
+    consumer_key: '',
+    consumer_secret: '',
+    access_token_key: '',
+    access_token_secret: ''
 })
 
-Twitter.pipe(fs.createWriteStream('tweets.json'));
+let tweets = {}
 
 app.get('/', function (req, res) {
-    res.render('index', { tweets: tweetFile })
+    
+    client.get('search/tweets', { q: '#azfey', result_type: 'recent', count: "30" }, function (error, tweets, response) {
+
+        res.render('index.ejs', { allTweets: tweets.statuses })
+    })
 })
 
-Twitter.on('connection success', function (uri) {
-    console.log('connection success', uri);
+app.get('/', function (req, res) {
+    res.render('index')
 })
 
-Twitter.on('connection success', function (uri) {
-    console.log('connection success', uri);
-})
-
-Twitter.on('connection aborted', function () {
-    console.log('connection aborted');
+io.on('connection', function (socket) {
+    socket.emit('renderTweets')
 });
 
-Twitter.on('connection error network', function (error) {
-    console.log('connection error network', error);
-});
-
-Twitter.on('connection error stall', function () {
-    console.log('connection error stall');
-});
-
-Twitter.on('connection error http', function (httpStatusCode) {
-    console.log('connection error http', httpStatusCode);
-});
-
-Twitter.on('connection error unknown', function (error) {
-    console.log('connection error unknown', error);
-    Twitter.close();
-});
-
-app.listen(port, function () {
+http.listen(port, function () {
     console.log('server is online at port ' + port)
 })

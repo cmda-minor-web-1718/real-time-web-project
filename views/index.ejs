@@ -8,9 +8,17 @@
 </head>
 <body>
 
-    <h1>Wasasasasasaaaaaaaaa</h1>
+    <section class="footballTweets">
+        <h2>AZ - Feyenoord</h2>
+        <% allTweets.forEach(function(tweet) { %>
+            <% if (tweet.text.substr(0,2) == "RT") {}else { %>
+            <p><%= tweet.user.name %> @<%= tweet.user.screen_name %>:  "<%= tweet.text %>"     <%= tweet.created_at %></p>
+            <% } %>
+        <% }) %>
+    </section>
 
-    <p><%= tweets %></p>
-    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script/script.js"></script>
+
 </body>
 </html>

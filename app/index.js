@@ -33,26 +33,27 @@ var scopes = [
 
 app = express();
 app
-.use(bodyParser.urlencoded({ extended: true }))
-.use(cookieParser())
-.use(
-  session({
-    key: "user_sid",
-    secret: "somerandonstuffs",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      expires: 600000
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(cookieParser())
+  .use(
+    session({
+      key: "user_sid",
+      secret: "somerandonstuffs",
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        expires: 600000
+      }
+    })
+  )
+  .use((req, res, next) => {
+    // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
+    // This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
+    if (req.cookies.user_sid && !req.session.user) {
+      res.clearCookie("user_sid");
     }
-  })
-).use((req, res, next) => {
-  // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
-  // This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
-  if (req.cookies.user_sid && !req.session.user) {
-    res.clearCookie("user_sid");
-  }
-  next();
-});
+    next();
+  });
 
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
@@ -62,7 +63,6 @@ var sessionChecker = (req, res, next) => {
     next();
   }
 };
-
 
 app
   .use(function(req, res, next) {
@@ -91,7 +91,7 @@ app
       spotifyApi.setAccessToken(data.body["access_token"]);
       spotifyApi.setRefreshToken(data.body["refresh_token"]);
 
-    // Retrieval of current state
+      // Retrieval of current state
       spotifyApi.getMyCurrentPlaybackState({}).then(
         function(data) {
           // Output items
@@ -101,8 +101,8 @@ app
           console.log("Something went wrong!", err);
         }
       );
-
-         //   Create a cool playlist
+    });
+    //   Create a cool playlist
     //     .createPlaylist("mr_vanderwal", "My Cool Playlist", { public: true })
     //     .then(
     //       function(data) {
@@ -115,8 +115,8 @@ app
     // });
 
     response.render("redirect.html");
- 
   })
+
   .get("/register", function(request, response) {
     var User = userFunctions.models.user;
     database.sequelize
@@ -153,9 +153,9 @@ function socketConnection(socket) {
   console.log("this is a code", justatest[socket.user]);
   userFunctions.checkLocalStorage(socket);
   var spotifyApi = new SpotifyWebApi({
-    clientId: "df21ea498dc949f3b44488f35c52a0f0",
-    clientSecret: "1290da6c919f4e18b69b65dc28e8afc4",
-    redirectUri: "http://localhost:3000/callback"
+    clientId: process.env.SPOTIFY_CLIENT_ID,
+    clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+    redirectUri: process.env.SPOTIFY_REDIRECT_URI
   });
 
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes);

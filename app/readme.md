@@ -72,6 +72,8 @@ Made the effort to create a account, and is able to use all functionality offere
 ### The handeling of sockets events
 
 
+#### Server side
+
 #### Client Side
 
 ##### `socket.on("check localstorage")` 

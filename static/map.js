@@ -27,13 +27,12 @@ function showPosition(position) {
         long: position.coords.longitude,
         lat: position.coords.latitude
     }
-    
+
     // console.log(geoLocation.long + ' , ' + geoLocation.lat);
     socket.emit('geoLocation', geoLocation);
     // console.log(geoLocation);
 
     // map
-    
     mymap.setView([geoLocation.lat, geoLocation.long])
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -54,7 +53,7 @@ function showPosition(position) {
         long: position.coords.longitude,
         lat: position.coords.latitude
     }
-    
+
 };
 
 getLocation();

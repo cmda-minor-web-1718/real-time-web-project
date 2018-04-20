@@ -21,7 +21,7 @@ app.get("/", (req,res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('user logged in');
+  console.log('user channels in');
   socket.on('geoLocation', (geoLocation) => {
     console.log(geoLocation);
   })
@@ -30,4 +30,3 @@ io.on('connection', (socket) => {
 server.listen(7008, () => {
   console.log('app is running on localhost:8080, WAHOOO');
 });
-

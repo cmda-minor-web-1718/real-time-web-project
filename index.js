@@ -1,35 +1,33 @@
 const express = require("express");
-const googleMaps = require("@google/maps");
-
+const dotenv = require("dotenv").config();
+const http = require('http');
+const socketIO = require('socket.io');
 
 const app = express();
+const server = http.Server(app);
+const io = socketIO(server);
 
-
+// https://scotch.io/tutorials/use-ejs-to-template-your-node-application
 app.set('view engine', 'ejs');
 
-var googleMapsClient = googleMaps.createClient({
-  key: "AIzaSyAVTJ9w1iE5gBXHfGkK0v9ZRKw7BIGkEjs",
-  Promise: Promise
+// server files in the static folder when '/static' is requested
+app.use('/static', express.static('static'));
+
+
+// get the directory
+app.get("/", (req,res) => {
+  // empty variable to show response
+  res.render("home", { response:'response' });
 });
 
-
-app.use("/", (req,res) => {
-    var response;
-  googleMapsClient.geocode(
-    {
-      address: "1600 Amphitheatre Parkway, Mountain View, CA"
-    },
-    function(err, response) {
-      if (!err) {
-        var response = response.json.results;
-        response.forEach(element => {
-            console.log(element.geometry)
-        });
-      }
-    }
-  );
-  res.render("home", { response });
+io.on('connection', (socket) => {
+  console.log('user logged in');
+  socket.on('geoLocation', (geoLocation) => {
+    console.log(geoLocation);
+  })
 });
 
-app.listen(8080);
+server.listen(7008, () => {
+  console.log('app is running on localhost:8080, WAHOOO');
+});
 

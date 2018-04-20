@@ -9,7 +9,7 @@ var long;
 var lat;
 console.log('vince');
 
-var mymap = L.map('map');
+var mymap = L.map('map').setView([geoLocation.lat, geoLocation.long], 13);
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -33,6 +33,7 @@ function showPosition(position) {
     // console.log(geoLocation);
 
     // map
+    
     mymap.setView([geoLocation.lat, geoLocation.long])
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -42,13 +43,18 @@ function showPosition(position) {
         accessToken: 'pk.eyJ1IjoidmluY2VudGtlbXBlcnMiLCJhIjoiY2pnNnRhYW9zMG8wcDMycnc4dDh3aDNjNyJ9.-wLNslCspydMxYt3w2Xnhw'
     }).addTo(mymap);
 
-    var circle = L.marker([geoLocation.lat, geoLocation.long]).addTo(mymap);
+    var circle = L.marker([geoLocation.lat, geoLocation.long], {
+        color: 'green',
+        fillColor: '#f03',
+        fillOpacity: 0.5
+    }).addTo(mymap);
 
 
     return geoLocation = {
         long: position.coords.longitude,
         lat: position.coords.latitude
-    }  
+    }
+    
 };
 
 getLocation();

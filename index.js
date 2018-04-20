@@ -21,6 +21,7 @@ app.get("/", (req,res) => {
 });
 
 io.on('connection', (socket) => {
+  console.log('user logged in');
   socket.on('geoLocation', (geoLocation) => {
     console.log(geoLocation);
   })

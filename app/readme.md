@@ -101,6 +101,8 @@ WIP, endpoint that should be called from the server to indicate that the user lo
 The authenticated generated for the user. Will be passed down by the client after the generation has been completed
 ###### Function
 
+#### Server side
+
 #### Client Side
 
 ##### `socket.on("check localstorage")` 

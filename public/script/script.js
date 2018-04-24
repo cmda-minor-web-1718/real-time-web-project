@@ -1,9 +1,18 @@
 (function(){
+
     var socket = io()
     
-    // socket.on('renderTweets', function(){
-    //     window.setInterval(function(){
-    //         socket.
-    //     }, 5000)
-    // })
+    const homeTeam = document.querySelector('.home'),
+        awayTeam = document.querySelector('.away')
+
+    homeTeam.addEventListener('change', function() {
+        const hashtag = "#" + homeTeam.value + awayTeam.value
+        socket.emit('hashtag')
+    })
+
+    awayTeam.addEventListener('change', function () {
+        const hashtag = "#" + homeTeam.value + awayTeam.value
+        socket.emit('hashtag', hashtag)
+    })
+
 })()

@@ -4,6 +4,7 @@ const nodemon = require('nodemon')
 const ejs = require('ejs')
 
 const apikey = require('./apikey')
+const clubs = require('./clubs')
 const Twitter = require('twitter')
 
 const http = require('http').Server(app);
@@ -27,17 +28,18 @@ app.get('/', function (req, res) {
     
     client.get('search/tweets', { q: '#azfey', result_type: 'recent', count: "30" }, function (error, tweets, response) {
 
-        res.render('index.ejs', { allTweets: tweets.statuses })
+        res.render('index', { 
+            allTweets: tweets.statuses, 
+            clubs: clubs
+        })
     })
 })
 
-app.get('/', function (req, res) {
-    res.render('index')
+io.on('connection', function(socket) {
+    socket.on('hashtag', function(hashtag) {
+        console.log(hashtag)
+    })
 })
-
-io.on('connection', function (socket) {
-    socket.emit('renderTweets')
-});
 
 http.listen(port, function () {
     console.log('server is online at port ' + port)

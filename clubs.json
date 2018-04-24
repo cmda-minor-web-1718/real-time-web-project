@@ -1,0 +1,76 @@
+{
+    "clubs": {
+        "Ado": {
+            "name": "Ado Den Haag",
+            "hashtag": "ado"
+        },
+        "Ajax": {
+            "name": "Ajax Amsterdam",
+            "hashtag": "aja"
+        },
+        "AZ": {
+            "name": "AZ Alkmaar",
+            "hashtag": "az"
+        },
+        "Excelsior": {
+            "name": "Excelsior",
+            "hashtag": "exc"
+        },
+        "FC Groningen": {
+            "name": "FC Groningen",
+            "hashtag": "gro"
+        },
+        "FC Twente": {
+            "name": "FC Twente",
+            "hashtag": "twe"
+        },
+        "FC Utrecht": {
+            "name": "FC Utrecht",
+            "hashtag": "utr"
+        },
+        "Feyenoord": {
+            "name": "Feyenoord",
+            "hashtag": "fey"
+        },
+        "Heracles": {
+            "name": "Heracles Almelo",
+            "hashtag": "her"
+        },
+        "NAC": {
+            "name": "NAC Breda",
+            "hashtag": "nac"
+        },
+        "PEC Zwolle": {
+            "name": "PEC Zwolle",
+            "hashtag": "zwo"
+        },
+        "PSV": {
+            "name": "PSV",
+            "hashtag": "psv"
+        },
+        "Roda": {
+            "name": "Roda JC",
+            "hashtag": "rod"
+        },
+        "SC Heerenveen": {
+            "name": "SC Heerenveen",
+            "hashtag": "hee"
+        },
+        "Sparta": {
+            "name": "Sparta",
+            "hashtag": "spa"
+        },
+        "Vitesse": {
+            "name": "Vitesse",
+            "hashtag": "vit"
+        },
+        "VVV-Venlo": {
+            "name": "VVV-Venlo",
+            "hashtag": "vvv"
+        },
+        "Willem II": {
+            "name": "Willem II",
+            "hashtag": "wil"
+        }
+    }
+}

@@ -8,6 +8,22 @@
 </head>
 <body>
 
+    <h3>Thuis</h3>
+    <select class="home">
+        <% for(club in clubs.clubs) { %>
+            <option value="<%= clubs.clubs[club].hashtag %>"><%= clubs.clubs[club].name %></option>
+        <% } %>
+    </select>
+
+    <h2>tegen</h2>
+
+    <h3>Uit</h3>
+    <select class="away">
+        <% for(club in clubs.clubs) { %>
+            <option value="<%= clubs.clubs[club].hashtag %>"><%= clubs.clubs[club].name %></option>
+            <% } %>
+    </select>
+
     <section class="footballTweets">
         <h2>AZ - Feyenoord</h2>
         <% allTweets.forEach(function(tweet) { %>

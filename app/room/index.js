@@ -8,6 +8,7 @@ function updateUserList(io, room) {
 
 exports.joinRoom = function joinRoom(io, socket, user, room) {
   socket.user = user;
+  console.log(socket.user);
   socket.room = room;
 
   // Ensure a entry of the room is made

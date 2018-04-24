@@ -56,13 +56,20 @@
 
   socket.on("check localstorage", function(localStorageKeyNames) {
     var userData = localStorage.getItem(localStorageKeyNames.temp);
-
-    if (!localStorageKeyNames) {
+    console.log(userData);
+    if (!userData) {
       promptLoginScreen();
     } else {
       var userData = JSON.parse(userData);
+      console.log(userData);
       socket.emit("logged in", userData);
     }
+  });
+
+  socket.on("logged in user", function(data) {
+    console.log("test", data.username);
+    var userData = { user: data.username, color: data.color, room: "General" };
+    socket.emit("logged in", userData);
   });
 
   chatBar.addEventListener("submit", function(event) {
@@ -117,6 +124,14 @@
 
   socket.on("user joined", function(data) {
     userParticipation(true, data);
+  });
+
+  socket.on("connect_error", function() {
+    console.log("Is The Server Online? " + socket.connected);
+  });
+
+  socket.on("connect", function() {
+    console.log("Is The Server Online? " + socket.connected);
   });
 
   socket.on("update roomlist", function(data) {

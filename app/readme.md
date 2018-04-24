@@ -8,8 +8,24 @@
     - [Requirements](#requirements)
     - [Install guide](#install-guide)
     - [Dependencies](#dependencies)
+        - [Api's](#apis)
     - [Internals](#internals)
+        - [Types of users](#types-of-users)
+            - [`temporary user`](#temporary-user)
+            - [`Registered user`](#registered-user)
         - [The handeling of sockets events](#the-handeling-of-sockets-events)
+            - [Server Side](#server-side)
+                - [`socket.on('logged in user')`](#socketonlogged-in-user)
+                    - [Params](#params)
+                    - [Function](#function)
+                - [`socket.on('spotify user authenticated')`](#socketonspotify-user-authenticated)
+                    - [Params](#params)
+                    - [Function](#function)
+            - [Client Side](#client-side)
+                - [`socket.on("check localstorage")`](#socketoncheck-localstorage)
+                    - [Params](#params)
+                    - [Function](#function)
+            - [`socket.emit("new message")`](#socketemitnew-message)
 
 ## Purpose of the app
 This application aims to offer a solution to real time chat applications. Here you can make your own user groups, see who is online and more.
@@ -71,6 +87,19 @@ Made the effort to create a account, and is able to use all functionality offere
 
 ### The handeling of sockets events
 
+#### Server Side
+
+##### `socket.on('logged in user')` 
+###### Params
+A session.user object to validate & register in the socket.
+###### Function
+WIP, endpoint that should be called from the server to indicate that the user logged in to a account in the database. 
+
+
+##### `socket.on('spotify user authenticated')`
+###### Params
+The authenticated generated for the user. Will be passed down by the client after the generation has been completed
+###### Function
 
 #### Client Side
 

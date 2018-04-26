@@ -11,7 +11,6 @@ The goal of this course is to learn how to create a real-time web application.
 - **[Technologies used](#technologies-used)**
 - **[The web app](#the-web-app)**
 - **[External data source](#external-data-source)**
-- **[Events](#events)**
 - **[Data life cycle](#data-life-cycle)**
 - **[Wishlist](#wishlist)**
 
@@ -46,6 +45,10 @@ The web app uses the following technologies:
 - Twitter Stream Api
 - Twitter Api
 
+### Socket.io
+
+Socket.io is used to emit a new client when a new tweet is tweeted. Socket.io is also used to emit when an error has occured.
+
 ## The web app
 
 When a user goes to the website, the app primarily shows two dropdowns, which contain all the football teams from the Dutch Eredivisie. These clubs are rendered by a clubs.JSON file that exists on the server. A user can select a home-, and a away team. When the submit button is clicked, the magic happens.
@@ -62,9 +65,9 @@ When the server gets the tweets, it sends the data to the client. When a new twe
 
 The external data source is the [Twitter API](https://developer.twitter.com/). The web app asks for the 30 most recent tweets, and for every tweet that is tweeted after the first request.
 
-## Events
+## Data life cycle
 
-
+![Data life cycle](https://imgur.com/leDXB5A)
 
 ## Wishlist
 
@@ -72,22 +75,3 @@ The external data source is the [Twitter API](https://developer.twitter.com/). T
 - Show live and matches that are starting withing a few days
 - Add more styling based on the match the user wants tweets from
 - Selecting a team only once, so no double hashtag (#azaz for example)
-
-
-<!-- ☝️ replace this description -->
-
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-
-<!-- Maybe a table of contents here? 📚 -->
-
-<!-- How about a section that describes how to install this project? 🤓 -->
-
-<!-- ...but how does one use this project? What are its features 🤔 -->
-
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
-
-<!-- Where do the 0️⃣s and 1️⃣s live in your project? What db system are you using?-->
-
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-
-<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->

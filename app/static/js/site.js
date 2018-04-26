@@ -4,20 +4,15 @@
   const chatWindow = document.getElementById("messages");
   const userWindow = document.getElementById("users");
   const roomsWindow = document.getElementById("rooms");
-
   const changeRoom = document.getElementById("change_room");
   const roomInput = document.getElementById("room_input");
-
   const tempUser = document.querySelector(".tempUser");
   const loginTempUser = document.querySelector(".loginTempUser");
-
   const currentRoom = document.querySelector("#current_room");
   const typingNotification = document.querySelector("#is_typing");
-
   const chatWindows = document.querySelector("#chat-chat");
-
   const chatBar = document.querySelector("#chatbar");
-
+  const spotifyOnlySelection = document.querySelector("#spotifyOnlySelection");
   var socket = io();
 
   socket.on("save user in localstorage", function(data) {
@@ -68,7 +63,15 @@
 
   socket.on("logged in user", function(data) {
     console.log("test", data.username);
-    var userData = { user: data.username, color: data.color, room: "General" };
+    var userData = {
+      user: data.username,
+      color: data.color,
+      room: socket.room | "General"
+    };
+    console.log("spotify", data.spotifyCode);
+    if (data.spotifyCode) {
+      userData.spotifyCode = data.spotifyCode;
+    }
     socket.emit("logged in", userData);
   });
 
@@ -103,7 +106,8 @@
 
   changeRoom.addEventListener("click", function() {
     socket.emit("change room", {
-      room: roomInput.value
+      room: roomInput.value,
+      spotifyOnly: spotifyOnlySelection.checked
     });
   });
 
@@ -113,6 +117,23 @@
 
   socket.on("setup user client", function(data) {
     console.log(data);
+
+    if (data.spotify === true) {
+      let mItem = document.createElement("li");
+      let p = document.createElement("p");
+      let userDiv = document.createElement("div");
+      userDiv.textContent = " Joined a spotify listening room, setting up.";
+      userDiv.style.color = String(data.user_color);
+      p.appendChild(userDiv);
+      t = document.createTextNode(
+        "Joined a spotify listening room, setting up."
+      );
+      p.appendChild(t);
+      mItem.appendChild(p);
+      chatWindow.appendChild(mItem);
+      socket.emit("setup spotify playlist", { room: room, user: user });
+    }
+
     document.querySelector("#tempaccount").style.display = "none";
     document.querySelector("#chatbar").style.display = "flex";
     document.querySelector("#display").style.display = "grid";

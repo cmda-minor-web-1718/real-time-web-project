@@ -11,9 +11,9 @@ function getParameterByName(name, url) {
 }
 
 socket.on("logged in user", function(data) {
-  console.log("test", data.username);
+  console.log("test");
   // var userData = { user: data.username, color: data.color, room: 0 };
-  socket.emit("spotify user authenticated", {
+  socket.emit("spotify generate access token", {
     user: data.username,
     code: getParameterByName("code")
   });

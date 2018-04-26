@@ -1,3 +1,4 @@
+"use strict";
 let rooms = {};
 
 function updateUserList(io, room) {
@@ -30,16 +31,15 @@ exports.joinRoom = function joinRoom(
     rooms[room].push(user);
   }
 
+  socket.to(room).broadcast.emit("user joined", {
+    user: user,
+    room: room
+  });
   // Signal the users client to configure
   socket.emit("setup user client", {
     user: user,
     room: room,
     spotify: spotify
-  });
-
-  socket.to(room).broadcast.emit("user joined", {
-    user: user,
-    room: room
   });
 
   updateUserList(io, room);

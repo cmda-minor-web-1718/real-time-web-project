@@ -30,6 +30,9 @@
                 - [`socket.on('typing')`](#socketontyping)
                     - [Params](#params)
                     - [Function](#function)
+                - [`socket.on('setup spotify playlist)`](#socketonsetup-spotify-playlist)
+                    - [Params](#params)
+                - [Function](#function)
                 - [`socket.on('spotify generate access token')`](#socketonspotify-generate-access-token)
                     - [Params](#params)
                     - [Function](#function)
@@ -104,6 +107,9 @@ As the name indicates, these are users that want to use the application but didn
 Made the effort to create a account, and is able to use all functionality offered by the web application.
 
 ### Data
+![test](Diagram.png)
+
+
 `SpotifySessionRoomPair`: Saves the meta data of the spotify playlist created for the chatroom. 
 Meta data here means: `playlist_id`
 `UserKeyPairs`: Pairs a users name with his spotify access key.
@@ -146,6 +152,14 @@ Removes the current active user belonging to the socket from the active room.
 A `typing` boolean to indicate the current typing state. 
 ###### Function
 if it's true it will emit a `typing` message to all clients in the same room as the typing client.
+
+##### `socket.on('setup spotify playlist)`
+###### Params
+`user`: Name of the user
+`room`: Room the spotify playlist will be created for
+##### Function
+Createsa playlist for the connected user based on the channel name. Currently always creates a playlist, even if there is already a playlist with this name.
+
 
 ##### `socket.on('spotify generate access token')`
 ###### Params

@@ -91,7 +91,8 @@ function generateSpotifyAPIObject() {
   return (spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENT_ID,
     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-    redirectUri: process.env.SPOTIFY_REDIRECT_URI
+    redirectUri: process.env.SPOTIFY_REDIRECT_URI ^^^
+
   }));
 }
 
@@ -127,7 +128,8 @@ app
   })
 
   .get("/register", function(request, response) {
-    database.sequelize
+    database.sequelize ^^^
+
       .sync({ force: true })
       .then(() =>
         User.create({
@@ -157,7 +159,8 @@ function socketConnection(socket) {
     console.log("testing");
     spotifyApi.getMe().then(
       function(data) {
-        console.log("testinggggggggg", data.body);
+        console.log("testinggggggggg", data.body); ^^^
+
         spotifyApi
           .createPlaylist("mr_vanderwal", data.room, { public: true })
           .then(

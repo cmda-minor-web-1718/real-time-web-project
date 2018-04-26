@@ -119,6 +119,7 @@
     console.log(data);
 
     if (data.spotify === true) {
+      se;
       let mItem = document.createElement("li");
       let p = document.createElement("p");
       let userDiv = document.createElement("div");
@@ -131,7 +132,7 @@
       p.appendChild(t);
       mItem.appendChild(p);
       chatWindow.appendChild(mItem);
-      socket.emit("setup spotify playlist", { room: room, user: user });
+      socket.emit("setup spotify playlisest", { room: room, user: user });
     }
 
     document.querySelector("#tempaccount").style.display = "none";
@@ -150,7 +151,7 @@
   socket.on("connect_error", function() {
     console.log("Is The Server Online? " + socket.connected);
   });
-
+  se;
   socket.on("connect", function() {
     console.log("Is The Server Online? " + socket.connected);
   });

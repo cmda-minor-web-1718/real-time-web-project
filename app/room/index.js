@@ -53,7 +53,8 @@ exports.leaveRoom = function leaveRoom(io, socket, user, room) {
     socket.leave(room);
     socket.to(room).broadcast.emit("user left", {
       user: user
-    });
+    }); ^^^
+
 
     console.log(rooms[room]);
     rooms[room] = rooms[room].filter(u => u !== user);

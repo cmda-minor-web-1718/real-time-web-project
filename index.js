@@ -24,6 +24,9 @@ io.on('connection', (socket) => {
   console.log('user channels in');
   socket.on('geoLocation', (geoLocation) => {
     console.log(geoLocation);
+    var userGeoLocation = geoLocation;
+
+    socket.emit('userloc', userGeoLocation);
   })
 });
 

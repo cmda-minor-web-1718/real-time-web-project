@@ -20,57 +20,41 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    two.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
+  // show the lat long on the page
+  two.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
 
-    geoLocation = {
-        long: position.coords.longitude,
-        lat: position.coords.latitude
-    }
+  geoLocation.lat = position.coords.latitude;
+  geoLocation.long = position.coords.longitude;
 
-    // console.log(geoLocation.long + ' , ' + geoLocation.lat);
+    // Emit the geoLocation
     socket.emit('geoLocation', geoLocation);
-    // console.log(geoLocation);
-
-    // map
+    // map view
     mymap.setView([geoLocation.lat, geoLocation.long])
-
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoidmluY2VudGtlbXBlcnMiLCJhIjoiY2pnNnRhYW9zMG8wcDMycnc4dDh3aDNjNyJ9.-wLNslCspydMxYt3w2Xnhw'
-    }).addTo(mymap);
-
-    var circle = L.marker([geoLocation.lat, geoLocation.long], {
-        color: 'green',
-        fillColor: '#f03',
-        fillOpacity: 0.5
-    }).addTo(mymap);
-
-
-    return geoLocation = {
-        long: position.coords.longitude,
-        lat: position.coords.latitude
-    }
-
 };
 
-getLocation();
-console.log(geoLocation);
-
-var mymap = L.map('map').setView([geoLocation.lat, geoLocation.long], 13);
-
+// map
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoidmluY2VudGtlbXBlcnMiLCJhIjoiY2pnNnRhYW9zMG8wcDMycnc4dDh3aDNjNyJ9.-wLNslCspydMxYt3w2Xnhw'
 }).addTo(mymap);
 
-var circle = L.circle([51.505, -0.09], {
+var circle = L.marker([geoLocation.lat, geoLocation.long], {
     color: 'green',
     fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 100
+    fillOpacity: 0.5
 }).addTo(mymap);
+
+socket.on('userloc', (userGeoLocation) => {
+  L.circle([userGeoLocation.lat, userGeoLocation.long], {
+    color: 'red',
+    fill: '#fff',
+    radius: 10
+  }).addTo(mymap);
+});
+
+
+
+
+getLocation();

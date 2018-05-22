@@ -10,14 +10,11 @@
 <body>
     <section class="tweets">
         <h2>Zoek alle tweets voor:</h2>
-        <h2 class="hashtag"><%= hashTweet %></h2>
+        <h2 class="hashtag"></h2>
         <section class="footballTweets">
-            <% allTweets.forEach(function(tweet) { %>
-                <p><%= tweet.user.name %> @<%= tweet.user.screen_name %>: "<%= tweet.text %>" <%= tweet.created_at %></p>
-            <% }) %>
         </section>
     </section>
 
-    <a href="../">Terug</a>
+    <a class="backButton" href="../">Terug</a>
 
     <% include footer.ejs %>

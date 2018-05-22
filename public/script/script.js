@@ -1,6 +1,6 @@
 (function(){
 
-    const socket = io()
+    const socket = io.connect()
 
     const homeTeam = document.querySelector('.home'),
         awayTeam = document.querySelector('.away')
@@ -44,24 +44,18 @@
 
     socket.on('newTweet', function(result, track) {
         const tweetList = document.querySelector('.footballTweets'),
-            tweet = result.user.name + " @" + result.user.screen_name + ": " + result.text + " " + result.created_at,
+            tweet = '@' + result.user.name + ': ' + result.text + " " + result.created_at,
             elP = document.createElement('p')
             elP.innerHTML = tweet
         
-        tweetList.prepend(elP)
+        if(tweetList) {
+            tweetList.prepend(elP)
+        }
     })
 
-    const list = document.querySelector('.footballTweets')
-    if(list) {
-        const tweets = list.querySelectorAll('p')
-        if (tweets.length == 0) {
-            const noTweet = 'There are currently no recent tweets. This match is played a long time ago. Please search for a more recent match.'
-            const elP = document.createElement('p')
-            elP.innerHTML = noTweet
-            elP.classList.add('noTweet')
-            list.appendChild(elP)
-        }
-    }
+    socket.on('nice', function() {
+        alert('gaat lekker')
+    })
 
     const back = document.querySelector('a')
     if(back) {
@@ -69,8 +63,67 @@
             socket.emit('closeStream')
         })
     }
+    if(homeTeam) {
+        const button = document.querySelector('input[type=submit]')
 
-    // Error
+        button.addEventListener('click', function(){
+            let homeVal = homeTeam.value,
+                awayVal = awayTeam.value
+
+            console.log(homeVal + " " + awayVal)
+                
+            socket.emit('teamVal', homeVal, awayVal)
+        })
+    }
+
+    const backButton = document.querySelector('.backButton')
+    if(backButton) {
+        backButton.addEventListener('click', function () {
+            socket.emit('backButtonClicked')
+        })
+    }
+
+    socket.on('joinedRoom', function(room) {
+        console.log('Joined room ' + room)
+    })
+
+    socket.on('loadStaticTweets', function(allTweets) { 
+
+        const home = getParameterByName('home'),
+            away = getParameterByName('away')
+            hashTitle = document.querySelector('.hashtag')
+
+        hashTitle.innerHTML = '#' + home + away
+
+        allTweets.forEach(function(tweet) { 
+            const elP = document.createElement('p'),
+                elSection = document.querySelector('.footballTweets')
+
+            elP.innerHTML = '@' + tweet.user.name + ': ' + tweet.text + " " + tweet.created_at
+            elSection.appendChild(elP)
+        })
+    })
+
+    if (location.href.includes('hashtag')) {
+
+        const home = getParameterByName( 'home' ),
+            away = getParameterByName( 'away' )
+
+        console.log( home, away )
+
+        socket.emit('joinRoom', home + away)
+    }
+
+    // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
     socket.on('network', function () {
         alert('Er was een probleem met je internet verbinging. Probeer je te verbinden met het internet en probeer het opnieuw')
@@ -84,5 +137,22 @@
     socket.on('data error', function () {
         alert('Iets ging verkeerd met de ontvangen data van Twitter. Probeer de pagina te herladen.')
     })
+
+    const list = document.querySelector('.footballTweets')
+    
+    const checkList = function() {
+        if (list) {
+            const tweets = list.querySelectorAll('p')
+            if (tweets.length == 0) {
+                const noTweet = 'There are currently no recent tweets. This match is played a long time ago. Please search for a more recent match.'
+                const elP = document.createElement('p')
+                elP.innerHTML = noTweet
+                elP.classList.add('noTweet')
+                list.appendChild(elP)
+            }
+        }
+    }
+
+    setTimeout(checkList, 1000)
 
 })()

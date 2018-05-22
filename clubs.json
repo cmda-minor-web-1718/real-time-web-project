@@ -143,6 +143,30 @@
                 "color1": "red",
                 "color2": "#01529B"
             }
+        },
+        "Test voor eindoplevering 1": {
+            "name": "Trump",
+            "hashtag": "trump",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Test voor eindoplevering 2": {
+            "name": "niks",
+            "hashtag": "",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Test voor eindoplevering 3": {
+            "name": "Obama",
+            "hashtag": "obama",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
         }
     }
 }

@@ -17,10 +17,10 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 const client = new Twitter({
-    consumer_key: '',
-    consumer_secret: '',
-    access_token_key: '',
-    access_token_secret: ''
+    consumer_key: 'KoXoTAfrg0VSj9RcjqKas4MK9',
+    consumer_secret: 'vSPL4reVQzSpJ7gfasmh47IG4nmXFn4Avh3MXFquZEnV0Zusj3',
+    access_token_key: '129562240-TWMiAol6hMV1pCVBPdfTo4olz6cdnGkrX7lJ1zcv',
+    access_token_secret: '0daqhe9BCeeelvOgjcYgAaaXsQ1MfcUNlNp8wOaMJ1dEW'
 })
 
 let tweets = {}
@@ -32,58 +32,95 @@ app.get('/', function (req, res) {
     })
 })
 
-app.get('/hashtag', (req, res) => {
-    const { home, away } = req.query,
-        hashTweet = "#" + req.query.home + req.query.away
+app.get('/hashtag', function (req, res) {
 
-    client.get('search/tweets', { q: "#" + req.query.home + req.query.away, result_type: 'recent', count: "30" }, function (error, tweets, response) {
+    res.render('tweet' )
 
-        const newTwitterStream = new twitterStream(apikey, false);
-        newTwitterStream.stream('statuses/filter', {
-            track: "#" + req.query.home + req.query.away,
-        });
+})
 
-        newTwitterStream.on('data', function (obj) {
-            const result = JSON.parse(obj)
-            io.emit('newTweet', result)
+
+
+
+
+
+
+
+
+
+io.on('connection', function (socket) {
+
+    socket.on('joinRoom', function( room ) {
+        console.log(room)
+        socket.join(room)
+        socket.in(room).emit('joinedRoom', room)
+    })
+
+    socket.on('teamVal', function (homeVal, awayVal) {
+
+        let room = '#' + homeVal + awayVal,
+            home = homeVal,
+            away = awayVal
+
+        console.log('#' + home + away)
+
+        socket.on('backButtonClicked', function () {
+            
         })
 
+        //         client.get('search/tweets', { q: room, result_type: 'recent', count: "30" }, function (error, tweets, response) {
+        //             if (tweets) {
+        //                 res.render('tweet', {
+        //                     allTweets: tweets.statuses, 
+        //                     clubs: clubs,
+        //                     hashTweet: room
+        //                 })
+        //             }
 
-        // Errors
+        //             const newTwitterStream = new twitterStream(apikey, false);
+        //             newTwitterStream.stream('statuses/filter', {
+        //                 track: room
+        //             })
 
-        newTwitterStream.on('connection aborted', function() {
-            io.emit('aborted')
-        })
-        newTwitterStream.on('connection error network', function () {
-            io.emit('network')
-        })
-        newTwitterStream.on('connection error http', function () {
-            io.emit('http')
-        })
-        newTwitterStream.on('connection error unknown', function () {
-            io.emit('unknown')
-        })
-        newTwitterStream.on('data error', function () {
-            io.emit('data error')
-        })
-
-
-
-        io.on('connection', function(socket){
-            socket.on('closeStream', function() {
-                newTwitterStream.close()
-            })
-        })
-
-        if(tweets) {
-            res.render('tweet', {
-                allTweets: tweets.statuses, 
-                clubs: clubs,
-                hashTweet: hashTweet
-            })
-        }
+        //             newTwitterStream.on('data', function (obj) {
+        //                 const result = JSON.parse(obj)
+        //                 io.emit('newTweet', result)
+        //             })
+        //         })
+        //     })
+        // })
     })
 })
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    //     // Errors
+
+    //     newTwitterStream.on('connection aborted', function() {
+    //         io.emit('aborted')
+    //     })
+    //     newTwitterStream.on('connection error network', function () {
+    //         io.emit('network')
+    //     })
+    //     newTwitterStream.on('connection error http', function () {
+    //         io.emit('http')
+    //     })
+    //     newTwitterStream.on('connection error unknown', function () {
+    //         io.emit('unknown')
+    //     })
+    //     newTwitterStream.on('data error', function () {
+    //         io.emit('data error')
+    //     })
+
 
 http.listen(port, function () {
     console.log('server is online at port ' + port)

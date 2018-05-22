@@ -38,21 +38,13 @@ app.get('/hashtag', function (req, res) {
 
 })
 
-
-
-
-
-
-
-
-
-
 io.on('connection', function (socket) {
 
-    socket.on('joinRoom', function( room ) {
-        console.log(room)
+    socket.on('joinRoom', function (room) {
         socket.join(room)
-        socket.in(room).emit('joinedRoom', room)
+        io.to(room).emit('nice')
+        console.log('verstuurd')
+        socket.in('room').emit('joinedRoom', room)
     })
 
     socket.on('teamVal', function (homeVal, awayVal) {

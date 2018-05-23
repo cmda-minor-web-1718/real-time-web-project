@@ -1,0 +1,172 @@
+{
+    "clubs": {
+        "Ado": {
+            "name": "Ado Den Haag",
+            "hashtag": "ado",
+            "color": {
+                "color1": "#FEDD22",
+                "color2": "#178135"
+            }
+        },
+        "Ajax": {
+            "name": "Ajax Amsterdam",
+            "hashtag": "aja",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "AZ": {
+            "name": "AZ Alkmaar",
+            "hashtag": "az",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Excelsior": {
+            "name": "Excelsior",
+            "hashtag": "exc",
+            "color": {
+                "color1": "red",
+                "color2": "black"
+            }
+        },
+        "FC Groningen": {
+            "name": "FC Groningen",
+            "hashtag": "gro",
+            "color": {
+                "color1": "green",
+                "color2": "white"
+            }
+        },
+        "FC Twente": {
+            "name": "FC Twente",
+            "hashtag": "twe",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "FC Utrecht": {
+            "name": "FC Utrecht",
+            "hashtag": "utr",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Feyenoord": {
+            "name": "Feyenoord",
+            "hashtag": "fey",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Heracles": {
+            "name": "Heracles Almelo",
+            "hashtag": "her",
+            "color": {
+                "color1": "black",
+                "color2": "white"
+            }
+        },
+        "NAC": {
+            "name": "NAC Breda",
+            "hashtag": "nac",
+            "color": {
+                "color1": "black",
+                "color2": "#FEDD22"
+            }
+        },
+        "PEC Zwolle": {
+            "name": "PEC Zwolle",
+            "hashtag": "zwo",
+            "color": {
+                "color1": "#2058AF",
+                "color2": "white"
+            }
+        },
+        "PSV": {
+            "name": "PSV",
+            "hashtag": "psv",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Roda": {
+            "name": "Roda JC",
+            "hashtag": "rod",
+            "color": {
+                "color1": "black",
+                "color2": "#FEDD22"
+            }
+        },
+        "SC Heerenveen": {
+            "name": "SC Heerenveen",
+            "hashtag": "hee",
+            "color": {
+                "color1": "#01529B",
+                "color2": "white"
+            }
+        },
+        "Sparta": {
+            "name": "Sparta",
+            "hashtag": "spa",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Vitesse": {
+            "name": "Vitesse",
+            "hashtag": "vit",
+            "color": {
+                "color1": "black",
+                "color2": "#FEDD22"
+            }
+        },
+        "VVV-Venlo": {
+            "name": "VVV-Venlo",
+            "hashtag": "vvv",
+            "color": {
+                "color1": "black",
+                "color2": "#FEDD22"
+            }
+        },
+        "Willem II": {
+            "name": "Willem II",
+            "hashtag": "wil",
+            "color": {
+                "color1": "red",
+                "color2": "#01529B"
+            }
+        },
+        "Test voor eindoplevering 1": {
+            "name": "Trump",
+            "hashtag": "trump",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Test voor eindoplevering 2": {
+            "name": "niks",
+            "hashtag": "",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        },
+        "Test voor eindoplevering 3": {
+            "name": "Obama",
+            "hashtag": "obama",
+            "color": {
+                "color1": "red",
+                "color2": "white"
+            }
+        }
+    }
+}

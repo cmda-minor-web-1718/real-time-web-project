@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+    <title>Football tweets</title>
+    <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <form method="GET" action="/hashtag">
+        <h1>#MATCHDAY</h1>
+        <p>Vind tweets over een wedstrijd. Selecteer een thuis-, en uitteam, en de website haalt direct tweets op over die wedstrijd.</p>
+        <div>
+            <select class="home" name="home">
+                <% for(club in clubs.clubs) { %>
+                    <option class="<%= clubs.clubs[club].color.color1 %> <%= clubs.clubs[club].color.color2 %>" value="<%= clubs.clubs[club].hashtag %>"><%= clubs.clubs[club].name %></option>
+                <% } %>
+            </select>
+
+            <h2>tegen</h2>
+
+            <select class="away" name="away">
+                <% for(club in clubs.clubs) { %>
+                    <option class="<%= clubs.clubs[club].color.color1 %> <%= clubs.clubs[club].color.color2 %>" value="<%= clubs.clubs[club].hashtag %>"><%= clubs.clubs[club].name %></option>
+                    <% } %>
+            </select>
+        </div>
+
+        <input type="submit"></input>
+    </form>
+
+    <% include footer.ejs %>

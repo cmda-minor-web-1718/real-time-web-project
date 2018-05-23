@@ -1,0 +1,119 @@
+html * {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(122, 206, 255);
+}
+
+h1 {
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 30vh;
+}
+
+form p {
+    margin-bottom: 2rem;
+    font-size: 20px;
+    text-align: center;
+}
+
+form div select {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    padding: .5rem;
+    -webkit-appearance: none;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    border: 0;
+    background-color: white;
+    text-align: center;
+    transition: 
+        box-shadow .3s ease;
+}
+
+form div select:focus {
+    outline: 0;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+form input[type=submit] {
+    background-color: rgb(245, 245, 245);
+    display: block;
+    width: 25%;
+    margin: 0 auto;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: sans-serif;
+    border-radius: 0;
+    border: 0;
+    font-weight: 500;
+    transition: 
+    box-shadow .3s ease;
+}
+
+form input[type=submit]:hover,
+form div select:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px #00000052;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0)
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.footballTweets {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.footballTweets p {
+    margin: 1rem 0;
+}
+
+.tweets h2 {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.hashtag {
+    font-size: 150px;
+    margin-top: 0 !important;
+    text-align: center;
+}
+
+a {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.noTweet {
+    padding: 1rem;
+    border: solid red 2px;
+    background-color: white;
+    text-align: center;
+}

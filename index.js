@@ -1,5 +1,5 @@
-const express = require("express");
-const dotenv = require("dotenv").config();
+const express = require('express');
+const dotenv = require('dotenv').config();
 const http = require('http');
 const socketIO = require('socket.io');
 
@@ -13,23 +13,12 @@ app.set('view engine', 'ejs');
 // server files in the static folder when '/static' is requested
 app.use('/static', express.static('static'));
 
-
 // get the directory
-app.get("/", (req,res) => {
-  // empty variable to show response
-  res.render("home", { response:'response' });
-});
-
-io.on('connection', (socket) => {
-  console.log('user channels in');
-  socket.on('geoLocation', (geoLocation) => {
-    console.log(geoLocation);
-    var userGeoLocation = geoLocation;
-
-    socket.emit('userloc', userGeoLocation);
-  })
+app.get('/', (req, res) => {
+	// empty variable to show response
+	res.render('home', { response: 'response' });
 });
 
 server.listen(7008, () => {
-  console.log('app is running on localhost:7008, WAHOOO');
+	console.log('app is running on localhost:7008, WAHOOO');
 });

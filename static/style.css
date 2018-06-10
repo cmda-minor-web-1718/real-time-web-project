@@ -16,10 +16,16 @@ main {
 	height: 100vh;
 }
 
+main > h1 {
+	font-size: 4em;
+	text-align: center;
+}
+
 main a > button {
 	background-color: black;
 	padding: 1em 2.9em;
 	color: white;
+	font-size: 1em;
 	font-weight: bolder;
 	border: none;
 	border-radius: 2em;

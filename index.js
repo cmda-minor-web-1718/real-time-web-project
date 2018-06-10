@@ -19,6 +19,11 @@ app.get('/', (req, res) => {
 	res.render('home', { response: 'response' });
 });
 
+app.get('/room', (req, res) => {
+	let roomName = 'rick';
+	res.render('room', { response: roomName });
+});
+
 server.listen(7008, () => {
 	console.log('app is running on localhost:7008, WAHOOO');
 });

@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 const http = require('http');
 const socketIO = require('socket.io');
 const marked = require('marked');
+const shortid = require('shortid');
 
 const app = express();
 const server = http.Server(app);
@@ -18,13 +19,12 @@ app.use('/static', express.static('static'));
 
 // get the directory
 app.get('/', (req, res) => {
-	// empty variable to show response
-	res.render('home', { response: 'response' });
+	let newId = shortid.generate();
+	res.render('home', { id: newId });
 });
 
-app.get('/room', (req, res) => {
-	console.log(res);
-	io.on('connection', socket => {});
+app.get('/:newId', (req, res) => {
+	// io.on('connection', socket => {});
 	let roomName = 'rick';
 	res.render('room', { response: roomName });
 });

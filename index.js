@@ -24,7 +24,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:newId', (req, res) => {
-	// io.on('connection', socket => {});
+	console.log(req.params.newId);
+	io.on('connection', function(socket) {
+		socket.emit('news', { hello: 'world' });
+		socket.on('my other event', function(data) {
+			console.log(data);
+		});
+	});
 	let roomName = 'rick';
 	res.render('room', { response: roomName });
 });

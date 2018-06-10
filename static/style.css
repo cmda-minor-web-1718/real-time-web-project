@@ -1,3 +1,27 @@
-#map {
-    height: 40em;
+* {
+	margin: 0;
+	font-family: monospace;
+}
+
+body {
+	background-color: cornflowerblue;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+main a > button {
+	background-color: black;
+	padding: 1em 2.9em;
+	color: white;
+	font-weight: bolder;
+	border: none;
+	border-radius: 2em;
+	margin-top: 4em;
 }

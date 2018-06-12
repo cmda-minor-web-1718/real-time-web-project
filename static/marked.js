@@ -14,9 +14,10 @@ var thisLocation = window.location.pathname;
 while (thisLocation.charAt(0) === '/') {
 	thisLocation = thisLocation.substr(1);
 }
-console.log(thisLocation);
+
 
 socket.on('news', function(data) {
+	thisLocation = data;
 	console.log(data);
-	socket.emit('my other event', { my: 'data' });
+	socket.emit('my other event', { my: data });
 });

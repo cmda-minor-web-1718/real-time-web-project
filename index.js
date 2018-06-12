@@ -23,16 +23,21 @@ app.get('/', (req, res) => {
 	res.render('home', { id: newId });
 });
 
+// go to room
 app.get('/:newId', (req, res) => {
 	console.log(req.params.newId);
-	io.on('connection', function(socket) {
-		socket.emit('news', { hello: 'world' });
-		socket.on('my other event', function(data) {
-			console.log(data);
-		});
-	});
 	let roomName = 'rick';
 	res.render('room', { response: roomName });
+});
+
+// socket connection
+
+
+io.on('connection', function(socket){
+	console.log('user connects');
+  socket.on('disconnect', function(){
+  	console.log('user disconnected')
+  });
 });
 
 server.listen(7008, () => {

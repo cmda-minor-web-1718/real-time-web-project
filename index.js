@@ -26,19 +26,32 @@ app.get('/', (req, res) => {
 // go to room
 app.get('/:newId', (req, res) => {
 	console.log(req.params.newId);
-	let roomName = 'rick';
+	let roomName = req.params.newId;
 	res.render('room', { response: roomName });
 });
 
+
+
 // socket connection
-
-
 io.on('connection', function(socket){
 	console.log('user connects');
-  socket.on('disconnect', function(){
-  	console.log('user disconnected')
-  });
+	socket.broadcast.emit('hi');
+
+	// emit somethi
+	socket.emit('file', { hello: 'world' });
+		socket.on('my other event', data =>  {
+			contentsOfRooms.push(data);
+	});
+
+
+
+	 // user disconnects
+	socket.on('disconnect', () => {
+		console.log('user disconnected');
+	});
 });
+
+
 
 server.listen(7008, () => {
 	console.log('app is running on localhost:7008, WAHOOO');

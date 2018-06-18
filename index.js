@@ -31,27 +31,24 @@ app.get('/:newId', (req, res) => {
 });
 
 
-
 // socket connection
 io.on('connection', function(socket){
 	console.log('user connects');
 	socket.broadcast.emit('hi');
 
-	// emit somethi
+	// emit something
 	socket.emit('file', { hello: 'world' });
 		socket.on('my other event', data =>  {
 			contentsOfRooms.push(data);
+			console.log(contentsOfRooms);
+			socket.emit('contentroom', contentsOfRooms);
 	});
-
-
 
 	 // user disconnects
 	socket.on('disconnect', () => {
 		console.log('user disconnected');
 	});
 });
-
-
 
 server.listen(7008, () => {
 	console.log('app is running on localhost:7008, WAHOOO');

@@ -25,7 +25,7 @@
 - [Authentication](#thinking-about-authentication)
 - [Api](#api)
 - [Connection](#connection)
-- [@TODO](#@TODO)
+- [@TODO](#todo)
 - [Wishlist](#wishlist)
 - [License](#license)
 
@@ -81,7 +81,7 @@ io.on('connection', (socket) => {
 
 <!-- Where do the 0️⃣s and 1️⃣s live in your project? What db system are you using?-->
 
-# @TODO
+# TODO
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 * [x] Stuff to do

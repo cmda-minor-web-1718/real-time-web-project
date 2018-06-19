@@ -17,6 +17,7 @@
     "url": "https://github.com/VincentKempers/real-time-web-project/issues"
   },
   "dependencies": {
+    "diff-match-patch": "^1.0.1",
     "dotenv": "^5.0.1",
     "ejs": "^2.5.8",
     "express": "^4.16.3",

@@ -8,31 +8,31 @@ while (thisLocation.charAt(0) === '/') {
 	thisLocation = thisLocation.substr(1);
 }
 
-var totalOnPage = {
-	markedTekst: preview.innerHTML,
-	roomId: thisLocation,
-}
 
 input.addEventListener(
 	'keyup',
 	event => {
 		preview.innerHTML = marked(input.value);
-		totalOnPage = {
-			markedTekst: preview.innerHTML,
+		var totalOnPage = {
+			markedTekst: input.value,
 			roomId: thisLocation,
 		}
-		socket.emit('my other event',totalOnPage);
+		socket.emit('my other event', totalOnPage);
 	},
 	true
 );
 
 
-socket.on('contentroom', (content) => {
-	console.log(content);
-	if (content.roomId === thisLocation) {
+// var totalOnPage = {
+// 	markedTekst: preview.innerHTML,
+// 	roomId: thisLocation,
+// }
 
-		if (preview.innerHTML !== content.markedTekst) {
-			preview.innerHTML = content.markedTekst;
+socket.on('contentroom', (content) => {
+	content.map(d => {
+		console.log(d.markedTekst);
+		if (d.roomId === thisLocation) {
+			input.value = d.markedTekst;
 		}
-	}
+	})
 })

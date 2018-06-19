@@ -18,9 +18,18 @@
 
 ## Table of contents
 
-- [How to install](## How to install)
+- [How to install](#How to install)
+- [Features](# Features)
+- [How does this work.](# How does this work.)
+- [Services](# Services)
+- [Authentication](# Thinking about authentication)
+- [Api](# API)
+- [Connection](# Connection)
+- [@TODO](# @TODO)
+- [Wishlist](# Wishlist)
+- [License](# License)
 
-## How to install
+# How to install
 
 - First clone the repo :thumbsup:
 - To install `npm install`
@@ -28,23 +37,39 @@
 - To start `npm start`
 - the server listens to `localhost:7008`
 
-## Features
+# Features
+The following features are/will be added to application:
 
-### how this work.
+### Added
+* show markdown in the editor.
+* show markdown in the editor.
+* show markdown in the editor.
+* show markdown in the editor.
+* show markdown in the editor.
 
-## Services
+### to be added
+
+# How does this work.
+
+# Services
 
 - [Socket.io](https://socket.io/)
 - [Expressjs](https://expressjs.com/)
 - [shortid](https://github.com/dylang/shortid)
 - [Markedjs](https://github.com/markedjs/marked)
-- [Github]()
+- [Google diff match patch](https://github.com/google/diff-match-patch)
+- [Google diff match patch NPM package](https://github.com/JackuB/diff-match-patch)
+- [Offline.js](https://github.hubspot.com/offline/docs/welcome/)
 
-### Thinking about authentication
+# Thinking about authentication
 
 [simple authentication in NodeJS](https://danialk.github.io/blog/2013/02/20/simple-authentication-in-nodejs/)
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
+
+# API
+
+# Connection
 
 ```
 io.on('connection', (socket) => {
@@ -56,16 +81,27 @@ io.on('connection', (socket) => {
 
 <!-- Where do the 0️⃣s and 1️⃣s live in your project? What db system are you using?-->
 
-## @TODO
+# @TODO
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+* [x] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
 
-#### Now we are here
 
-#### Wishlist
+# Wishlist
 
+
+# License
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 
-## License
+
 
 [MIT](https://opensource.org/licenses/MIT)

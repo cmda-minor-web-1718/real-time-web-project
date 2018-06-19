@@ -18,16 +18,16 @@
 
 ## Table of contents
 
-- [How to install](#How-to-install)
-- [Features](#Features)
-- [How does this work.](#How-does-this-work.)
-- [Services](#Services)
-- [Authentication](#Thinking-about-authentication)
-- [Api](#API)
-- [Connection](#Connection)
+- [How to install](#how-to-install)
+- [Features](#features)
+- [How does this work.](#how-does-this-work.)
+- [Services](#services)
+- [Authentication](#thinking-about-authentication)
+- [Api](#api)
+- [Connection](#connection)
 - [@TODO](#@TODO)
-- [Wishlist](#Wishlist)
-- [License](#License)
+- [Wishlist](#wishlist)
+- [License](#license)
 
 # How to install
 

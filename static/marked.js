@@ -1,4 +1,4 @@
-var socket = io(`http://localhost:7008`);
+var socket = io();
 var input = document.getElementById('input');
 var preview = document.getElementById('content');
 
@@ -8,31 +8,30 @@ while (thisLocation.charAt(0) === '/') {
 	thisLocation = thisLocation.substr(1);
 }
 
-
 input.addEventListener(
-	'keyup',
+	'input',
 	event => {
-		preview.innerHTML = marked(input.value);
 		var totalOnPage = {
 			markedTekst: input.value,
 			roomId: thisLocation,
-		}
+		};
+
+		// send the new value and thislocation/roomid
 		socket.emit('my other event', totalOnPage);
 	},
 	true
 );
 
+// On enter room emit event to join room
+socket.emit('joinRoom', thisLocation);
 
-// var totalOnPage = {
-// 	markedTekst: preview.innerHTML,
-// 	roomId: thisLocation,
-// }
+// Receive latest text on joining a room
+socket.on('hello', latestTekst => {
+	input.value = latestTekst;
+});
 
-socket.on('contentroom', (content) => {
-	content.map(d => {
-		console.log(d.markedTekst);
-		if (d.roomId === thisLocation) {
-			input.value = d.markedTekst;
-		}
-	})
-})
+socket.on('updatedTekst', content => {
+	console.log(content);
+	input.value = content;
+	preview.innerHTML = marked(input.value);
+});

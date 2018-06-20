@@ -1,25 +1,107 @@
-# real-time-web-project
+<h1 align="center">let's Meetup.</h1>
 
-This repo will hold the project you're going to build during the last two weeks of RTW. It functions as a way to show you've attained the following learning goals of this course:
+<div align="center">
+  :globe_with_meridians::pushpin::bike: <img src="https://img.shields.io/badge/webdesign-building-yellow.svg">
+</div>
+<div align="center">
+  <strong>A real-time Markdown renderer for everyone!</strong>
+</div>
+<br />
 
-* Build a Node Web App which consumes an external data source through an API and serves a frontend using routing and templating techniques.
-* Create a "live" web app which reflects changes to the back-end data model in reactive front-end views, using real-time, event-based, messaging technologies like sockets or server-sent-events.
-* Describe their work in a professional readme with insightful diagrams showing the life cycle of their data.
+---
 
-<!-- ☝️ replace this description -->
+## real-time-web-project
 
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
+[Link to the project](#)
 
-<!-- Maybe a table of contents here? 📚 -->
+---
 
-<!-- How about a section that describes how to install this project? 🤓 -->
+## Table of contents
 
-<!-- ...but how does one use this project? What are its features 🤔 -->
+- [How to install](#how-to-install)
+- [Features](#features)
+- [How does this work.](#how-does-this-work.)
+- [Services](#services)
+- [Authentication](#thinking-about-authentication)
+- [Api](#api)
+- [Connection](#connection)
+- [@TODO](#todo)
+- [Wishlist](#wishlist)
+- [License](#license)
+
+# How to install
+
+- First clone the repo :thumbsup:
+- To install `npm install`
+- to run in development `npm run dev`
+- To start `npm start`
+- the server listens to `localhost:7008`
+
+# Features
+The following features are/will be added to application:
+
+### Added
+* show markdown in the editor.
+* show markdown in the editor.
+* show markdown in the editor.
+* show markdown in the editor.
+* show markdown in the editor.
+
+### to be added
+
+# How does this work.
+
+# Services
+
+- [Socket.io](https://socket.io/)
+- [Expressjs](https://expressjs.com/)
+- [shortid](https://github.com/dylang/shortid)
+- [Markedjs](https://github.com/markedjs/marked)
+- [Google diff match patch](https://github.com/google/diff-match-patch)
+- [Google diff match patch NPM package](https://github.com/JackuB/diff-match-patch)
+- [Offline.js](https://github.hubspot.com/offline/docs/welcome/)
+
+# Thinking about authentication
+
+[simple authentication in NodeJS](https://danialk.github.io/blog/2013/02/20/simple-authentication-in-nodejs/)
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 
+# API
+
+# Connection
+
+```
+io.on('connection', (socket) => {
+  // Socket Connection
+
+  })
+});
+```
+
 <!-- Where do the 0️⃣s and 1️⃣s live in your project? What db system are you using?-->
 
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+# TODO
 
+<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+* [x] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+* [ ] Stuff to do
+
+
+# Wishlist
+
+
+# License
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
+
+
+
+[MIT](https://opensource.org/licenses/MIT)

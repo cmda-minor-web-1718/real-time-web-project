@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="static/offline-theme-dark.css">
-    <link rel="stylesheet" href="static/offline-language-english.css">
+    <link rel="stylesheet" href="/static/offline-theme-dark.css">
+    <link rel="stylesheet" href="/static/offline-language-english.css">
     <title><%= response %> room</title>
 </head>
 <body>
-    <h1> Welcome to room: <%= response %></h1>
+	 <h1> Welcome to room: </h1>
     <main>
         <aside>
         <h2>User list</h2>
@@ -18,15 +18,16 @@
             </ul>
         </aside>
         <section>
-        <form method="POST" action="/save" ></form>
+		  <form method="POST" action="/save/<%= roomId %>">
             <textarea name="textarea" id="input" cols="30" rows="10"></textarea>
             <div id='content'></div>
             <button type="submit">Sla op</button>
+            </form>
         </section>
     </main>
-    <script src="static/offline.min.js"></script>
-    <script src="static/marked-min.js"></script>
+    <script src="/static/offline.min.js"></script>
+    <script src="/static/marked-min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="static/marked.js"></script>
+    <script src="/static/marked.js"></script>
 </body>
 </html>

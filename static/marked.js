@@ -3,10 +3,8 @@ var input = document.getElementById('input');
 var preview = document.getElementById('content');
 
 // location
-var thisLocation = window.location.pathname;
-while (thisLocation.charAt(0) === '/') {
-	thisLocation = thisLocation.substr(1);
-}
+var loc = window.location.pathname;
+var thisLocation = loc.split('/')[2];
 
 input.addEventListener(
 	'input',
@@ -26,7 +24,9 @@ input.addEventListener(
 socket.emit('joinRoom', thisLocation);
 
 // Receive latest text on joining a room
-socket.on('hello', latestTekst => {
+socket.on('invigorateFirstText', latestTekst => {
+	console.log(latestTekst);
+
 	input.value = latestTekst;
 });
 

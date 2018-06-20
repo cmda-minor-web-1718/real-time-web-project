@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
     <script src="/socket.io/socket.io.js" defer></script>
 </head>
 <body>
     <main>
         <h1>Live markdown editor</h1>
-        <a href="/<%= id %>"><button>Create a room</button></a>
+        <a href="/room/<%= id %>"><button>Create a room</button></a>
+        <a href="/login"><button>login with github</button></a>
     </main>
 </body>
 </html>

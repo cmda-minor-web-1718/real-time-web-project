@@ -1,0 +1,22 @@
+{% extends 'includes/main.html' %}
+<style>
+    body {
+        background-color:black;
+    }
+</style>
+{% block content %}
+
+<section id="tempaccount">
+    <form action='/display'>
+        <h1> What is your username? </h2>
+        <input type='text' class='tempUser'>Username</input>
+        <button type='submit' class='loginTempUser'> submit</button>
+    </form>
+   
+</section>
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="js/tempuserlogin.js">
+{% endblock %}
